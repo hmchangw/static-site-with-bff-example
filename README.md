@@ -36,7 +36,26 @@ own process. This repo splits them cleanly:
 
 ## Prerequisites
 
-- Node.js 18.17+ (Node 20 / 22 recommended).
+- Node.js 18.17+ (Node 20 / 22 recommended), **or** Docker 24+ with Compose v2.
+
+## Run with Docker Compose
+
+```bash
+docker compose up --build
+```
+
+Open <http://localhost:3000>. The `web` service builds the static export and
+serves it via nginx on port 3000; the `bff` service runs the Express API on
+port 4000.
+
+To point the static site at a non-default BFF URL (the browser must be able to
+reach it), pass `BFF_PUBLIC_URL` at build time:
+
+```bash
+BFF_PUBLIC_URL=https://bff.example.com CORS_ORIGIN=https://app.example.com \
+  docker compose build --no-cache web bff
+docker compose up
+```
 
 ## Install
 
