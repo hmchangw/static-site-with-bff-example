@@ -1,0 +1,16 @@
+{
+  "name": "static-nextjs-bff-demo",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": ["web", "bff"],
+  "scripts": {
+    "dev": "npm run dev --workspaces --if-present",
+    "dev:web": "npm --prefix web run dev",
+    "dev:bff": "npm --prefix bff run dev",
+    "build": "npm --prefix bff run build && npm --prefix web run build",
+    "build:web": "npm --prefix web run build",
+    "build:bff": "npm --prefix bff run build",
+    "start:bff": "npm --prefix bff run start",
+    "serve:web": "npm --prefix web run start"
+  }
+}
